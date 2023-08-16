@@ -1,8 +1,13 @@
-const yargs = require ('yargs/yargs')
-const { hideBin }=require('yargs/helpers')
-const argv = yargs(hideBin(process.argv)).argv
-var currentdate = new Date();
-
-
-console.log(currentdate)
-console.log(argv)
+const nums = process.argv.slice(2).map(n => +n)
+const sum = nums.reduce((acc, cur)=> acc + cur, 0)
+var primer = 55;
+var condition = Number(nums);
+if (condition == primer){
+    console.log('Верно')
+}
+if (condition > primer){
+    console.log('Меньше')
+}
+if (condition < primer){
+    console.log('Больше')
+}
