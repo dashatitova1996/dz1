@@ -1,13 +1,23 @@
-const nums = process.argv.slice(2).map(n => +n)
-const sum = nums.reduce((acc, cur)=> acc + cur, 0)
-var primer = 55;
-var condition = Number(nums);
-if (condition == primer){
-    console.log('Верно')
+#!/usr/bin/env node
+import * as readline from "node:readline/promises";
+import { stdin as input, stdout as output } from "node:process";
+
+const secret = Math.floor(Math.random() * 100);
+const start = 0;
+const end = 100;
+
+const rl = readline.createInterface({ input, output });
+let answer = await rl.question(
+	`Загадано число в диапазоне от ${start} до ${end}\nВведите число:`
+);
+
+while (+answer !== +secret) {
+	console.log(secret);
+	if (+secret > +answer) {
+		answer = await rl.question(`Больше\n---\nВведите новое число: `);
+	} else if (+secret < +answer) {
+		answer = await rl.question(`Меньше\n---\nВведите новое число: `);
+	}
 }
-if (condition > primer){
-    console.log('Меньше')
-}
-if (condition < primer){
-    console.log('Больше')
-}
+console.log("Вы угадали!");
+rl.close()
